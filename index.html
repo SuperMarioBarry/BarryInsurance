@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#c8102e" />
+  <title>Insurance Proposal Generator</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="appbar">
+    <div>
+      <div class="eyebrow">Proposal Studio</div>
+      <h1>Insurance Proposal Generator</h1>
+    </div>
+    <button id="installBtn" class="ghost" hidden>Install App</button>
+  </header>
+
+  <main class="shell">
+    <section class="panel form-panel">
+      <h2>Client & Product</h2>
+      <div class="grid two">
+        <label>Nationality<input id="nationality" value="Thai" /></label>
+        <label>Gender<select id="gender"><option>Female</option><option>Male</option></select></label>
+        <label>Age<input id="age" type="number" min="1" max="100" value="39" /></label>
+        <label>Product Name<input id="product" value="Secure Flexi Term" /></label>
+        <label>Currency<input id="currency" value="SGD" /></label>
+        <label>SGD → THB rate<input id="fx" type="number" step="0.01" value="25.80" /></label>
+      </div>
+      <label>Objective<textarea id="objective" rows="2">Provide financial protection for your loved ones in the event of unforeseen circumstances.</textarea></label>
+      <label>Plan overview<textarea id="overview" rows="3">A pure protection plan designed to provide high coverage at an affordable cost, giving you and your family peace of mind and financial security when it matters most.</textarea></label>
+      <div class="grid two">
+        <label>Optional logo<input id="logoUpload" type="file" accept="image/*" /></label>
+        <label>Optional family/header image<input id="headerUpload" type="file" accept="image/*" /></label>
+      </div>
+
+      <div class="section-head"><h2>Quotation 1</h2><span>Primary option</span></div>
+      <div class="grid two quote" data-q="1">
+        <label>Option title<input id="q1title" value="Secure Flexi Term to Age 65" /></label>
+        <label>Death benefit end age<input id="q1deathAge" type="number" value="65" /></label>
+        <label>Death benefit (SGD)<input id="q1death" type="number" value="1000000" /></label>
+        <label>TPD benefit (SGD)<input id="q1tpd" type="number" value="1000000" /></label>
+        <label>TPD end age<input id="q1tpdAge" type="number" value="65" /></label>
+        <label>Premium end age<input id="q1premEnd" type="number" value="65" /></label>
+        <label>Annual premium (SGD)<input id="q1prem1" type="number" step="0.01" value="1015" /></label>
+        <label>Premium band 1 label<input id="q1band1" value="Age 39–65" /></label>
+        <label>Second premium (optional)<input id="q1prem2" type="number" step="0.01" /></label>
+        <label>Premium band 2 label<input id="q1band2" placeholder="e.g. Age 70–75" /></label>
+      </div>
+
+      <div class="section-head"><h2>Quotation 2</h2><span>Comparison option</span></div>
+      <div class="grid two quote" data-q="2">
+        <label>Option title<input id="q2title" value="Secure Flexi Term to Age 75" /></label>
+        <label>Death benefit end age<input id="q2deathAge" type="number" value="75" /></label>
+        <label>Death benefit (SGD)<input id="q2death" type="number" value="1000000" /></label>
+        <label>TPD benefit (SGD)<input id="q2tpd" type="number" value="1000000" /></label>
+        <label>TPD end age<input id="q2tpdAge" type="number" value="70" /></label>
+        <label>Premium end age<input id="q2premEnd" type="number" value="75" /></label>
+        <label>Annual premium 1 (SGD)<input id="q2prem1" type="number" step="0.01" value="1617" /></label>
+        <label>Premium band 1 label<input id="q2band1" value="Age 39–69" /></label>
+        <label>Annual premium 2 (SGD)<input id="q2prem2" type="number" step="0.01" value="1505" /></label>
+        <label>Premium band 2 label<input id="q2band2" value="Age 70–75" /></label>
+      </div>
+
+      <div class="actions sticky-actions">
+        <button id="previewBtn">Update Preview</button>
+        <button id="pngBtn">Download PNG</button>
+        <button id="pdfBtn">Download PDF</button>
+        <button id="saveBtn" class="secondary">Save Proposal Data</button>
+        <label class="file-button secondary">Load Proposal Data<input id="loadJson" type="file" accept="application/json" /></label>
+      </div>
+      <p class="hint">All calculations happen on your device. Client data is not sent anywhere by this app.</p>
+    </section>
+
+    <section class="panel preview-panel">
+      <div class="preview-title"><h2>Live Preview</h2><span>One-page proposal</span></div>
+      <div id="proposalPreview" class="proposal-preview"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
